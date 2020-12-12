@@ -1,7 +1,17 @@
-import '../styles/globals.css'
+import "../styles/globals.scss";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+import Head from "next/head";
 
-export default MyApp
+const App = ({ Component, pageProps }) => {
+  return (
+    <>
+      <Head>
+        <title>Carbon Design System</title>
+        <link rel="icon" href="/favicon.svg" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
+};
+
+export default App;
