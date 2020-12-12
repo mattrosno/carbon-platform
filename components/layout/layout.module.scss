@@ -1,0 +1,10 @@
+@import "carbon-components/scss/globals/scss/layout";
+
+.content {
+  margin: 3rem 0 0 16rem;
+  background: var(--cds-ui-background);
+
+  @include carbon--breakpoint-down(lg) {
+    margin-left: 0;
+  }
+}

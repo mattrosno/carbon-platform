@@ -1,12 +1,33 @@
-import PageContent from "../components/PageContent";
-import PageHeader from "../components/PageHeader";
+import Layout from "../components/layout";
+import Link from "next/link";
+import { getSortedPostsData } from "../lib/library";
 
-const Home = () => {
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+}
+
+const Home = ({ allPostsData }) => {
   return (
-    <>
-      <PageHeader />
-      <PageContent>Content goes here...</PageContent>
-    </>
+    <Layout>
+      <ul>
+        {allPostsData.map(({ id, date, title }) => (
+          <li key={id}>
+            <Link href={`/library/${id}`}>
+              <a>{title}</a>
+            </Link>
+            <br />
+            <small>
+              <p>{date}</p>
+            </small>
+          </li>
+        ))}
+      </ul>
+    </Layout>
   );
 };
 

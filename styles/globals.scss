@@ -10,6 +10,38 @@ $feature-flags: (
   grid-columns-16: true,
 );
 
+// Color themes
+
+@import "carbon-components/scss/globals/scss/vendor/@carbon/themes/scss/themes";
+
+:root {
+  @include carbon--theme(
+    $theme: $carbon--theme--white,
+    $emit-custom-properties: true
+  );
+}
+
+.theme--g10 {
+  @include carbon--theme(
+    $theme: $carbon--theme--g10,
+    $emit-custom-properties: true
+  );
+}
+
+.theme--g90 {
+  @include carbon--theme(
+    $theme: $carbon--theme--g90,
+    $emit-custom-properties: true
+  );
+}
+
+.theme--g100 {
+  @include carbon--theme(
+    $theme: $carbon--theme--g100,
+    $emit-custom-properties: true
+  );
+}
+
 // Global styles
 @import "carbon-components/scss/globals/scss/css--font-face";
 @import "carbon-components/scss/globals/grid/grid";
@@ -17,3 +49,9 @@ $feature-flags: (
 // Carbon components
 @import "carbon-components/scss/components/button/button";
 @import "carbon-components/scss/components/ui-shell/ui-shell";
+
+// Base
+
+body {
+  background: $ui-01;
+}
