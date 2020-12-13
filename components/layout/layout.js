@@ -12,13 +12,13 @@ import {
   SideNavMenu,
   SideNavMenuItem,
   SkipToContent,
-} from "carbon-components-react";
-import { Search20, Switcher20 } from "@carbon/icons-react";
+} from 'carbon-components-react';
+import { Search20, Switcher20 } from '@carbon/icons-react';
 
-import Head from "next/head";
-import Link from "next/link";
-import { forwardRef } from "react";
-import styles from "./layout.module.scss";
+import Head from 'next/head';
+import Link from 'next/link';
+import { forwardRef } from 'react';
+import styles from './layout.module.scss';
 
 /**
  * Component to replace HeaderName, because HeaderName defaults an IBM prefix
@@ -30,6 +30,9 @@ const CustomHeaderName = () => (
   </Link>
 );
 
+/**
+ * Component to use in Carbon's UI shell components to work with Next's router.
+ */
 const NextLink = forwardRef(function NextLink(
   { href, children, className, ...rest },
   ref
@@ -43,7 +46,19 @@ const NextLink = forwardRef(function NextLink(
   );
 });
 
-const Layout = ({ children }) => {
+const Layout = ({ children, navData = [] }) => {
+  const guidelines = ['Accessibility', 'Content'];
+  const foundation = [
+    'Color',
+    'Grid',
+    'Icons',
+    'Pictograms',
+    'Motion',
+    'Layout',
+    'Themes',
+    'Typography',
+  ];
+
   return (
     <>
       <Head>
@@ -71,55 +86,33 @@ const Layout = ({ children }) => {
             <SideNav aria-label="Side navigation" expanded={isSideNavExpanded}>
               <SideNavItems>
                 <SideNavMenu title="Guidelines">
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Accessibility
-                  </SideNavMenuItem>
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Content
-                  </SideNavMenuItem>
+                  {guidelines.map((item, i) => (
+                    <SideNavMenuItem element={NextLink} href="/" key={i}>
+                      {item}
+                    </SideNavMenuItem>
+                  ))}
                 </SideNavMenu>
                 <SideNavMenu title="Foundation">
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Color
-                  </SideNavMenuItem>
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Grid
-                  </SideNavMenuItem>
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Icons
-                  </SideNavMenuItem>
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Pictograms
-                  </SideNavMenuItem>
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Motion
-                  </SideNavMenuItem>
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Layout
-                  </SideNavMenuItem>
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Themes
-                  </SideNavMenuItem>
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Typography
-                  </SideNavMenuItem>
+                  {foundation.map((item, i) => (
+                    <SideNavMenuItem element={NextLink} href="/" key={i}>
+                      {item}
+                    </SideNavMenuItem>
+                  ))}
                 </SideNavMenu>
                 <SideNavMenu title="Components">
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Accordion
-                  </SideNavMenuItem>
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Breadcrumb
-                  </SideNavMenuItem>
-                  <SideNavMenuItem element={NextLink} href="/">
-                    Button
-                  </SideNavMenuItem>
+                  {navData.map((item) => (
+                    <SideNavMenuItem
+                      element={NextLink}
+                      href={`/component/${item.id}`}
+                      key={item.id}>
+                      {item.name}
+                    </SideNavMenuItem>
+                  ))}
                 </SideNavMenu>
               </SideNavItems>
             </SideNav>
           </Header>
-        )}
-      ></HeaderContainer>
+        )}></HeaderContainer>
       <div className={`theme--g10 ${styles.content}`}>
         <Grid fullWidth>
           <Row>

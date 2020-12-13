@@ -1,34 +1,18 @@
-import Layout from "../components/layout";
-import Link from "next/link";
-import { getSortedPostsData } from "../lib/library";
+import Layout from '../components/layout';
+import { getComponentNavData } from '../lib/github';
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+export const getStaticProps = async () => {
+  const navData = await getComponentNavData();
+
   return {
     props: {
-      allPostsData,
+      navData,
     },
   };
-}
+};
 
-const Home = ({ allPostsData }) => {
-  return (
-    <Layout>
-      <ul>
-        {allPostsData.map(({ id, date, title }) => (
-          <li key={id}>
-            <Link href={`/library/${id}`}>
-              <a>{title}</a>
-            </Link>
-            <br />
-            <small>
-              <p>{date}</p>
-            </small>
-          </li>
-        ))}
-      </ul>
-    </Layout>
-  );
+const Home = ({ navData }) => {
+  return <Layout navData={navData}>Home page</Layout>;
 };
 
 export default Home;
