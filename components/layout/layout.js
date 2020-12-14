@@ -19,6 +19,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { forwardRef } from 'react';
 import styles from './layout.module.scss';
+import { useRouter } from 'next/router';
 
 /**
  * Component to replace HeaderName, because HeaderName defaults an IBM prefix
@@ -46,7 +47,9 @@ const NextLink = forwardRef(function NextLink(
   );
 });
 
-const Layout = ({ children, navData = [] }) => {
+const Layout = ({ children }) => {
+  const router = useRouter();
+
   const guidelines = ['Accessibility', 'Content'];
   const foundation = [
     'Color',
@@ -99,7 +102,7 @@ const Layout = ({ children, navData = [] }) => {
                     </SideNavMenuItem>
                   ))}
                 </SideNavMenu>
-                <SideNavMenu title="Components">
+                {/* <SideNavMenu title="Components">
                   {navData.map((item) => (
                     <SideNavMenuItem
                       element={NextLink}
@@ -108,6 +111,22 @@ const Layout = ({ children, navData = [] }) => {
                       {item.name}
                     </SideNavMenuItem>
                   ))}
+                </SideNavMenu> */}
+                <SideNavMenu title="Components" defaultExpanded={true}>
+                  <SideNavMenuItem
+                    element={NextLink}
+                    href="/component/accordion"
+                    isActive={router.asPath.startsWith('/component/accordion')}>
+                    Accordion
+                  </SideNavMenuItem>
+                  <SideNavMenuItem
+                    element={NextLink}
+                    href="/component/breadcrumb"
+                    isActive={router.asPath.startsWith(
+                      '/component/breadcrumb'
+                    )}>
+                    Breadcrumb
+                  </SideNavMenuItem>
                 </SideNavMenu>
               </SideNavItems>
             </SideNav>
