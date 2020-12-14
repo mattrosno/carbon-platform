@@ -14,6 +14,7 @@ import {
   SkipToContent,
 } from 'carbon-components-react';
 import { Search20, Switcher20 } from '@carbon/icons-react';
+import { useEffect, useState } from 'react';
 
 import Head from 'next/head';
 import Link from 'next/link';
@@ -49,6 +50,7 @@ const NextLink = forwardRef(function NextLink(
 
 const Layout = ({ children }) => {
   const router = useRouter();
+  const [navData, setNavData] = useState([]);
 
   const guidelines = ['Accessibility', 'Content'];
   const foundation = [
@@ -61,6 +63,12 @@ const Layout = ({ children }) => {
     'Themes',
     'Typography',
   ];
+
+  useEffect(() => {
+    fetch('/api/nav-data')
+      .then((response) => response.json())
+      .then((data) => setNavData(data));
+  }, [setNavData]);
 
   return (
     <>
@@ -102,31 +110,18 @@ const Layout = ({ children }) => {
                     </SideNavMenuItem>
                   ))}
                 </SideNavMenu>
-                {/* <SideNavMenu title="Components">
+                <SideNavMenu defaultExpanded={true} title="Components">
                   {navData.map((item) => (
                     <SideNavMenuItem
                       element={NextLink}
                       href={`/component/${item.id}`}
+                      isActive={router.asPath.startsWith(
+                        `/component/${item.id}`
+                      )}
                       key={item.id}>
                       {item.name}
                     </SideNavMenuItem>
                   ))}
-                </SideNavMenu> */}
-                <SideNavMenu title="Components" defaultExpanded={true}>
-                  <SideNavMenuItem
-                    element={NextLink}
-                    href="/component/accordion"
-                    isActive={router.asPath.startsWith('/component/accordion')}>
-                    Accordion
-                  </SideNavMenuItem>
-                  <SideNavMenuItem
-                    element={NextLink}
-                    href="/component/breadcrumb"
-                    isActive={router.asPath.startsWith(
-                      '/component/breadcrumb'
-                    )}>
-                    Breadcrumb
-                  </SideNavMenuItem>
                 </SideNavMenu>
               </SideNavItems>
             </SideNav>
