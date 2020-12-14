@@ -1,13 +1,21 @@
-import { getAllComponentIds, getComponentData } from '../../lib/github';
+import {
+  getAllComponentIds,
+  getComponentData,
+  getComponentNavData,
+} from '../../lib/github';
+import { useContext, useEffect } from 'react';
 
 import Head from 'next/head';
+import { LayoutContext } from '../../components/layout';
 
 export const getStaticProps = async ({ params }) => {
   const componentData = await getComponentData(params.id);
+  const navData = await getComponentNavData();
 
   return {
     props: {
       componentData,
+      navData,
     },
   };
 };
@@ -21,7 +29,13 @@ export const getStaticPaths = async () => {
   };
 };
 
-const Component = ({ componentData }) => {
+const Component = ({ componentData, navData }) => {
+  const { setNavData } = useContext(LayoutContext);
+
+  useEffect(() => {
+    setNavData(navData);
+  }, [navData, setNavData]);
+
   return (
     <>
       <Head>

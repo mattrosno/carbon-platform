@@ -14,12 +14,13 @@ import {
   SkipToContent,
 } from 'carbon-components-react';
 import { Search20, Switcher20 } from '@carbon/icons-react';
-import { useEffect, useState } from 'react';
 
 import Head from 'next/head';
+import { LayoutContext } from './context';
 import Link from 'next/link';
 import { forwardRef } from 'react';
 import styles from './layout.module.scss';
+import { useContext } from 'react';
 import { useRouter } from 'next/router';
 
 /**
@@ -50,7 +51,7 @@ const NextLink = forwardRef(function NextLink(
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const [navData, setNavData] = useState([]);
+  const { navData } = useContext(LayoutContext);
 
   const guidelines = ['Accessibility', 'Content'];
   const foundation = [
@@ -63,12 +64,6 @@ const Layout = ({ children }) => {
     'Themes',
     'Typography',
   ];
-
-  useEffect(() => {
-    fetch('/api/nav-data')
-      .then((response) => response.json())
-      .then((data) => setNavData(data));
-  }, [setNavData]);
 
   return (
     <>
