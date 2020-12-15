@@ -7,6 +7,8 @@ import { useContext, useEffect } from 'react';
 
 import Head from 'next/head';
 import { LayoutContext } from '../../components/layout';
+import hydrate from 'next-mdx-remote/hydrate';
+import { mdxComponents } from '../../lib/mdx';
 
 export const getStaticProps = async ({ params }) => {
   const componentData = await getComponentData(params.id);
@@ -36,12 +38,16 @@ const Component = ({ componentData, navData }) => {
     setNavData(navData);
   }, [navData, setNavData]);
 
+  const { title, contentMdx } = componentData;
+
+  const content = hydrate(contentMdx, { components: mdxComponents });
+
   return (
     <>
       <Head>
-        <title>{componentData.title}</title>
+        <title>{title}</title>
       </Head>
-      <div dangerouslySetInnerHTML={{ __html: componentData.contentHtml }} />
+      {content}
     </>
   );
 };
