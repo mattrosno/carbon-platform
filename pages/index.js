@@ -20,7 +20,11 @@ const Home = ({ navData }) => {
     setNavData(navData);
   }, [navData, setNavData]);
 
-  return <>Home page</>;
+  return (
+    <>
+      <h1>Home page</h1>
+    </>
+  );
 };
 
 export default Home;

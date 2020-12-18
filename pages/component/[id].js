@@ -38,14 +38,14 @@ const Component = ({ componentData, navData }) => {
     setNavData(navData);
   }, [navData, setNavData]);
 
-  const { title, contentMdx } = componentData;
+  const { frontMatter, source } = componentData;
 
-  const content = hydrate(contentMdx, { components: mdxComponents });
+  const content = hydrate(source, { components: mdxComponents });
 
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{frontMatter.title}</title>
       </Head>
       {content}
     </>
