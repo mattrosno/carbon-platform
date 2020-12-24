@@ -14,13 +14,13 @@ import {
   SkipToContent,
 } from 'carbon-components-react';
 import { Search20, Switcher20 } from '@carbon/icons-react';
+import { useContext, useEffect } from 'react';
 
 import Head from 'next/head';
 import { LayoutContext } from './context';
 import Link from 'next/link';
 import { forwardRef } from 'react';
 import styles from './layout.module.scss';
-import { useContext } from 'react';
 import { useRouter } from 'next/router';
 
 /**
@@ -52,6 +52,19 @@ const NextLink = forwardRef(function NextLink(
 const Layout = ({ children }) => {
   const router = useRouter();
   const { navData } = useContext(LayoutContext);
+
+  useEffect(() => {
+    const scroll = require('smooth-scroll')('a[href*="#"]', {
+      speed: 400,
+      durationMin: 250,
+      durationMax: 700,
+      easing: 'easeInOutCubic',
+      clip: true,
+      offset: 64,
+    });
+
+    return scroll.destroy;
+  }, []);
 
   const guidelines = ['Accessibility', 'Content'];
   const foundation = [
@@ -125,7 +138,11 @@ const Layout = ({ children }) => {
       <div className={`theme--g10 ${styles.content}`}>
         <Grid fullWidth>
           <Row>
-            <Column xlg={12} max={10}>
+            <Column
+              className={styles.main}
+              md={{ span: 6, offset: 1 }}
+              lg={{ span: 12, offset: 1 }}
+              xlg={{ span: 9, offset: 1 }}>
               {children}
             </Column>
           </Row>
