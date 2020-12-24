@@ -8,7 +8,7 @@ import { useContext, useEffect } from 'react';
 import Head from 'next/head';
 import { LayoutContext } from '../../components/layout';
 import hydrate from 'next-mdx-remote/hydrate';
-import { mdxComponents } from '../../lib/mdx';
+import { mdxComponents } from '../../components/mdx';
 
 export const getStaticProps = async ({ params }) => {
   const componentData = await getComponentData(params.id);
