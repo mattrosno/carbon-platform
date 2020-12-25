@@ -14,11 +14,14 @@ import {
   Table,
   Ul,
 } from '../markdown';
+import { AnchorLink, AnchorLinks } from '../anchor-links';
 
+import InlineNotification from '../inline-notification';
+import PageDescription from '../page-description';
 import styles from './mdx.module.scss';
 
-const Placeholder = ({ children }) => (
-  <div className={styles.placeholder}>MDX GOES HERE</div>
+const Placeholder = ({ children, name }) => (
+  <div className={styles.placeholder}>{name} MDX</div>
 );
 
 export const mdxComponents = {
@@ -32,36 +35,66 @@ export const mdxComponents = {
   ul: Ul,
   li: Li,
   blockquote: Blockquote,
-  code: ({ children }) => <Placeholder>{children}</Placeholder>,
+  code: ({ children }) => <Placeholder name="Code">{children}</Placeholder>,
   table: Table,
   a: Anchor,
   sup: Sup,
   abbr: Abbr,
-  Accordion: ({ children }) => <Placeholder>{children}</Placeholder>,
-  AccordionItem: ({ children }) => <Placeholder>{children}</Placeholder>,
-  AnchorLink: ({ children }) => <Placeholder>{children}</Placeholder>,
-  AnchorLinks: ({ children }) => <Placeholder>{children}</Placeholder>,
-  ArtDirection: ({ children }) => <Placeholder>{children}</Placeholder>,
-  ArticleCard: ({ children }) => <Placeholder>{children}</Placeholder>,
-  Aside: ({ children }) => <Placeholder>{children}</Placeholder>,
-  Caption: ({ children }) => <Placeholder>{children}</Placeholder>,
-  Column: ({ children }) => <Placeholder>{children}</Placeholder>,
-  ComponentDemo: ({ children }) => <Placeholder>{children}</Placeholder>,
-  ComponentVariant: ({ children }) => <Placeholder>{children}</Placeholder>,
-  DoDont: ({ children }) => <Placeholder>{children}</Placeholder>,
-  DoDontExample: ({ children }) => <Placeholder>{children}</Placeholder>,
-  DoDontRow: ({ children }) => <Placeholder>{children}</Placeholder>,
-  FeatureCard: ({ children }) => <Placeholder>{children}</Placeholder>,
-  FourOhFour: ({ children }) => <Placeholder>{children}</Placeholder>,
-  GifPlayer: ({ children }) => <Placeholder>{children}</Placeholder>,
-  Grid: ({ children }) => <Placeholder>{children}</Placeholder>,
-  ImageCard: ({ children }) => <Placeholder>{children}</Placeholder>,
-  InlineNotification: ({ children }) => <Placeholder>{children}</Placeholder>,
-  MdxIcon: ({ children }) => <Placeholder>{children}</Placeholder>,
-  PageDescription: ({ children }) => <Placeholder>{children}</Placeholder>,
-  ResourceCard: ({ children }) => <Placeholder>{children}</Placeholder>,
-  Row: ({ children }) => <Placeholder>{children}</Placeholder>,
-  Tab: ({ children }) => <Placeholder>{children}</Placeholder>,
-  Tabs: ({ children }) => <Placeholder>{children}</Placeholder>,
-  Video: ({ children }) => <Placeholder>{children}</Placeholder>,
+  Accordion: ({ children }) => (
+    <Placeholder name="Accordion">{children}</Placeholder>
+  ),
+  AccordionItem: ({ children }) => (
+    <Placeholder name="AccordionItem">{children}</Placeholder>
+  ),
+  AnchorLink,
+  AnchorLinks,
+  ArtDirection: ({ children }) => (
+    <Placeholder name="ArtDirection">{children}</Placeholder>
+  ),
+  ArticleCard: ({ children }) => (
+    <Placeholder name="ArticleCard">{children}</Placeholder>
+  ),
+  Aside: ({ children }) => <Placeholder name="Aside">{children}</Placeholder>,
+  Caption: ({ children }) => (
+    <Placeholder name="Caption">{children}</Placeholder>
+  ),
+  Column: ({ children }) => <Placeholder name="Column">{children}</Placeholder>,
+  ComponentDemo: ({ children }) => (
+    <Placeholder name="ComponentDemo">{children}</Placeholder>
+  ),
+  ComponentVariant: ({ children }) => (
+    <Placeholder name="ComponentVariant">{children}</Placeholder>
+  ),
+  DoDont: ({ children }) => <Placeholder name="DoDont">{children}</Placeholder>,
+  DoDontExample: ({ children }) => (
+    <Placeholder name="DoDontExample">{children}</Placeholder>
+  ),
+  DoDontRow: ({ children }) => (
+    <Placeholder name="DoDontRow">{children}</Placeholder>
+  ),
+  FeatureCard: ({ children }) => (
+    <Placeholder name="FeatureCard">{children}</Placeholder>
+  ),
+  FourOhFour: ({ children }) => (
+    <Placeholder name="FourOhFour">{children}</Placeholder>
+  ),
+  GifPlayer: ({ children }) => (
+    <Placeholder name="GifPlayer">{children}</Placeholder>
+  ),
+  Grid: ({ children }) => <Placeholder name="Grid">{children}</Placeholder>,
+  ImageCard: ({ children }) => (
+    <Placeholder name="ImageCard">{children}</Placeholder>
+  ),
+  InlineNotification,
+  MdxIcon: ({ children }) => (
+    <Placeholder name="MdxIcon">{children}</Placeholder>
+  ),
+  PageDescription,
+  ResourceCard: ({ children }) => (
+    <Placeholder name="ResourceCard">{children}</Placeholder>
+  ),
+  Row: ({ children }) => <Placeholder name="Row">{children}</Placeholder>,
+  Tab: ({ children }) => <Placeholder name="Tab">{children}</Placeholder>,
+  Tabs: ({ children }) => <Placeholder name="Tabs">{children}</Placeholder>,
+  Video: ({ children }) => <Placeholder name="Video">{children}</Placeholder>,
 };

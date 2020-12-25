@@ -61,7 +61,7 @@
 // @import 'carbon-components/scss/components/loading/loading';
 // @import 'carbon-components/scss/components/modal/modal';
 // @import 'carbon-components/scss/components/multi-select/multi-select';
-// @import 'carbon-components/scss/components/notification/inline-notification';
+@import 'carbon-components/scss/components/notification/inline-notification';
 // @import 'carbon-components/scss/components/notification/toast-notification';
 // @import 'carbon-components/scss/components/tooltip/tooltip';
 // @import 'carbon-components/scss/components/tabs/tabs';
@@ -80,12 +80,11 @@
 // @import 'carbon-components/scss/components/pagination/unstable_pagination';
 @import 'carbon-components/scss/components/ui-shell/ui-shell';
 
+// Typography
+@import 'plex';
+
 // Base
 
 body {
   background: $ui-01;
 }
-
-// Page
-
-@import '../components/page-table/page-table.scss';
