@@ -116,3 +116,81 @@ img {
 .abbr:global(.bx--tooltip--definition) button {
   font-size: 1em;
 }
+
+//---------------------------------------
+// Table
+//---------------------------------------
+
+.table-container {
+  margin: var(--space) -1rem 0;
+  overflow-x: auto;
+}
+
+.table {
+  line-height: 1.25;
+  width: 100%;
+
+  :global {
+    thead {
+      th {
+        @include carbon--type-style('heading-01');
+        color: $text-01;
+        padding: $spacing-md;
+        text-align: left;
+        white-space: nowrap;
+        background: $ui-01;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid $ui-03;
+
+        td {
+          @include carbon--type-style('body-short-01');
+          color: $text-01;
+          padding: $spacing-md;
+
+          img[src$='checkmark--glyph.svg'] {
+            width: 16px;
+            height: 16px;
+            margin: 0;
+          }
+
+          strong {
+            font-weight: font-weight('semibold');
+          }
+
+          @include carbon--breakpoint('lg') {
+            min-width: rem(100px);
+          }
+
+          @include carbon--breakpoint('xlg') {
+            min-width: rem(150px);
+          }
+        }
+      }
+    }
+  }
+}
+
+//---------------------------------------
+// Anchor
+//---------------------------------------
+
+.anchor:global(.bx--link) {
+  font-size: inherit;
+  text-decoration: underline;
+
+  &:hover {
+    color: $carbon--blue-80;
+  }
+
+  &:visited {
+    color: $link-01;
+  }
+
+  &:active {
+    color: $text-01;
+  }
+}

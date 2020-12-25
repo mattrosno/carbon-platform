@@ -1,5 +1,6 @@
 import {
   Abbr,
+  Anchor,
   Blockquote,
   H1,
   H2,
@@ -10,11 +11,10 @@ import {
   Ol,
   P,
   Sup,
+  Table,
   Ul,
 } from '../markdown';
 
-import Link from '../link';
-import PageTable from '../page-table';
 import styles from './mdx.module.scss';
 
 const Placeholder = ({ children }) => (
@@ -33,8 +33,8 @@ export const mdxComponents = {
   li: Li,
   blockquote: Blockquote,
   code: ({ children }) => <Placeholder>{children}</Placeholder>,
-  table: PageTable,
-  a: Link,
+  table: Table,
+  a: Anchor,
   sup: Sup,
   abbr: Abbr,
   Accordion: ({ children }) => <Placeholder>{children}</Placeholder>,
