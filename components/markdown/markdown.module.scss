@@ -122,6 +122,7 @@ img {
 //---------------------------------------
 
 .table-container {
+  --space: #{$spacing-06};
   margin: var(--space) -1rem 0;
   overflow-x: auto;
 }

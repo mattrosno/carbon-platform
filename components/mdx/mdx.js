@@ -16,12 +16,27 @@ import {
 } from '../markdown';
 import { AnchorLink, AnchorLinks } from '../anchor-links';
 
+import Image from 'next/image';
 import InlineNotification from '../inline-notification';
 import PageDescription from '../page-description';
 import styles from './mdx.module.scss';
 
-const Placeholder = ({ children, name }) => (
-  <div className={styles.placeholder}>{name} MDX</div>
+const Placeholder = ({ name }) => (
+  <p className={styles.placeholder}>{name} MDX</p>
+);
+
+const ColRow = ({ children, className }) => (
+  <p className={className}>{children}</p>
+);
+
+const Img = ({ alt, height, src, width }) => (
+  <Image
+    alt={alt}
+    height={height}
+    layout="responsive"
+    src={src}
+    width={width}
+  />
 );
 
 export const mdxComponents = {
@@ -40,6 +55,7 @@ export const mdxComponents = {
   a: Anchor,
   sup: Sup,
   abbr: Abbr,
+  img: Img,
   Accordion: ({ children }) => (
     <Placeholder name="Accordion">{children}</Placeholder>
   ),
@@ -58,7 +74,7 @@ export const mdxComponents = {
   Caption: ({ children }) => (
     <Placeholder name="Caption">{children}</Placeholder>
   ),
-  Column: ({ children }) => <Placeholder name="Column">{children}</Placeholder>,
+  Column: ColRow,
   ComponentDemo: ({ children }) => (
     <Placeholder name="ComponentDemo">{children}</Placeholder>
   ),
@@ -93,7 +109,7 @@ export const mdxComponents = {
   ResourceCard: ({ children }) => (
     <Placeholder name="ResourceCard">{children}</Placeholder>
   ),
-  Row: ({ children }) => <Placeholder name="Row">{children}</Placeholder>,
+  Row: ColRow,
   Tab: ({ children }) => <Placeholder name="Tab">{children}</Placeholder>,
   Tabs: ({ children }) => <Placeholder name="Tabs">{children}</Placeholder>,
   Video: ({ children }) => <Placeholder name="Video">{children}</Placeholder>,
