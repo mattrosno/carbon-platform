@@ -5,6 +5,13 @@
   @include carbon--type-style('code-02');
 }
 
-.placeholder + * {
+.image {
+  --space: #{$spacing-06};
+  margin-top: var(--space) !important; // override next/image
+  background: $ui-01;
+}
+
+.placeholder + *,
+.row + * {
   --space: #{$spacing-06};
 }

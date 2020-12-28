@@ -16,8 +16,9 @@ import {
 } from '../markdown';
 import { AnchorLink, AnchorLinks } from '../anchor-links';
 import { Column, Row } from 'carbon-components-react';
+import { MdxColumn, MdxRow } from './grid';
 
-import Image from 'next/image';
+import Img from './image';
 import InlineNotification from '../inline-notification';
 import PageDescription from '../page-description';
 import { columnProps } from '../layout';
@@ -29,20 +30,6 @@ const Placeholder = ({ name }) => (
       <p className={styles.placeholder}>{name} MDX</p>
     </Column>
   </Row>
-);
-
-const ColRow = ({ children, className }) => (
-  <section className={className}>{children}</section>
-);
-
-const Img = ({ alt, height, src, width }) => (
-  <Image
-    alt={alt}
-    height={height}
-    layout="responsive"
-    src={src}
-    width={width}
-  />
 );
 
 export const mdxComponents = {
@@ -80,7 +67,7 @@ export const mdxComponents = {
   Caption: ({ children }) => (
     <Placeholder name="Caption">{children}</Placeholder>
   ),
-  Column: ColRow,
+  Column: MdxColumn,
   ComponentDemo: ({ children }) => (
     <Placeholder name="ComponentDemo">{children}</Placeholder>
   ),
@@ -115,7 +102,7 @@ export const mdxComponents = {
   ResourceCard: ({ children }) => (
     <Placeholder name="ResourceCard">{children}</Placeholder>
   ),
-  Row: ColRow,
+  Row: MdxRow,
   Tab: ({ children }) => <Placeholder name="Tab">{children}</Placeholder>,
   Tabs: ({ children }) => <Placeholder name="Tabs">{children}</Placeholder>,
   Video: ({ children }) => <Placeholder name="Video">{children}</Placeholder>,

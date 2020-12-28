@@ -47,6 +47,9 @@ const NextLink = forwardRef(function NextLink(
   );
 });
 
+/**
+ * Default MDX layout.
+ */
 export const columnProps = {
   md: { span: 6, offset: 1 },
   lg: { span: 13, offset: 1 },
