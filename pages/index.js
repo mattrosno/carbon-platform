@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 
-import { LayoutContext } from '../components/layout';
-import { getComponentNavData } from '../lib/github';
+import { MarkdownContext } from '@/layouts/markdown';
+import { getComponentNavData } from '@/lib/github';
 
 export const getStaticProps = async () => {
   const navData = await getComponentNavData();
@@ -14,7 +14,7 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ navData }) => {
-  const { setNavData } = useContext(LayoutContext);
+  const { setNavData } = useContext(MarkdownContext);
 
   useEffect(() => {
     setNavData(navData);

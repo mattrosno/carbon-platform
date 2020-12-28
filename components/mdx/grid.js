@@ -1,7 +1,7 @@
 import { Column, Row } from 'carbon-components-react';
 
 import React from 'react';
-import { columnProps } from '../layout';
+import { columnProps } from '@/layouts/markdown';
 import cx from 'classnames';
 import styles from './mdx.module.scss';
 

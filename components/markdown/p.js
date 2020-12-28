@@ -1,7 +1,7 @@
 import { Column, Row } from 'carbon-components-react';
 import { paragraph, paragraphContainer } from './markdown.module.scss';
 
-import { columnProps } from '../layout';
+import { columnProps } from '@/layouts/markdown';
 import cx from 'classnames';
 
 const P = ({ children, className, noGrid, ...rest }) => {

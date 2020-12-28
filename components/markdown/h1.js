@@ -1,8 +1,8 @@
 import { Column, Row } from 'carbon-components-react';
 import { h1, h1Container } from './markdown.module.scss';
 
-import AutolinkHeader from '../autolink-header';
-import { columnProps } from '../layout';
+import AutolinkHeader from '@/components/autolink-header';
+import { columnProps } from '@/layouts/markdown';
 import cx from 'classnames';
 
 const H1 = ({ children, className, noGrid, ...rest }) => {

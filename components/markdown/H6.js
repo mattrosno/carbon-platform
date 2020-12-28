@@ -1,7 +1,7 @@
 import { Column, Row } from 'carbon-components-react';
 import { h6, h6Container } from './markdown.module.scss';
 
-import { columnProps } from '../layout';
+import { columnProps } from '@/layouts/markdown';
 import cx from 'classnames';
 
 const H6 = ({ children, className, noGrid, ...rest }) => {

@@ -2,7 +2,7 @@ import { Column, Row } from 'carbon-components-react';
 import { table, tableContainer } from './markdown.module.scss';
 
 import PropTypes from 'prop-types';
-import { columnProps } from '../layout';
+import { columnProps } from '@/layouts/markdown';
 
 const PageTable = ({ children }) => (
   <Row className={tableContainer} narrow={true}>

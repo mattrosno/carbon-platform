@@ -5,7 +5,7 @@ import slugify from 'slugify';
 
 const AnchorLink = ({ to, children, className }) => {
   const href = to || `#${slugify(children, { lower: true })}`;
-  
+
   return (
     <a className={cx(link, className)} href={href}>
       {children}

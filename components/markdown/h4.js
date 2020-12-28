@@ -1,7 +1,7 @@
 import { Column, Row } from 'carbon-components-react';
 import { h4, h4Container } from './markdown.module.scss';
 
-import { columnProps } from '../layout';
+import { columnProps } from '@/layouts/markdown';
 import cx from 'classnames';
 
 const H4 = ({ children, className, noGrid, ...rest }) => {

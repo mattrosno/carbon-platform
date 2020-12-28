@@ -2,13 +2,13 @@ import {
   getAllComponentIds,
   getComponentData,
   getComponentNavData,
-} from '../../lib/github';
+} from '@/lib/github';
 import { useContext, useEffect } from 'react';
 
 import Head from 'next/head';
-import { LayoutContext } from '../../components/layout';
+import { MarkdownContext } from '@/layouts/markdown';
 import hydrate from 'next-mdx-remote/hydrate';
-import { mdxComponents } from '../../components/mdx';
+import { mdxComponents } from '@/components/mdx';
 
 export const getStaticProps = async ({ params }) => {
   const componentData = await getComponentData(params.id);
@@ -32,7 +32,7 @@ export const getStaticPaths = async () => {
 };
 
 const Component = ({ componentData, navData }) => {
-  const { setNavData } = useContext(LayoutContext);
+  const { setNavData } = useContext(MarkdownContext);
 
   useEffect(() => {
     setNavData(navData);

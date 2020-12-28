@@ -15,10 +15,10 @@ import { Search20, Switcher20 } from '@carbon/icons-react';
 import { useContext, useEffect } from 'react';
 
 import Head from 'next/head';
-import { LayoutContext } from './context';
 import Link from 'next/link';
+import { MarkdownContext } from './markdown-context';
 import { forwardRef } from 'react';
-import styles from './layout.module.scss';
+import styles from './markdown-layout.module.scss';
 import { useRouter } from 'next/router';
 
 /**
@@ -57,9 +57,9 @@ export const columnProps = {
   max: { span: 8, offset: 1 },
 };
 
-const Layout = ({ children }) => {
+const MarkdownLayout = ({ children }) => {
   const router = useRouter();
-  const { navData } = useContext(LayoutContext);
+  const { navData } = useContext(MarkdownContext);
 
   useEffect(() => {
     const scroll = require('smooth-scroll')('a[href*="#"]', {
@@ -150,4 +150,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default MarkdownLayout;

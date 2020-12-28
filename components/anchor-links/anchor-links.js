@@ -8,7 +8,7 @@ import {
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { columnProps } from '../layout';
+import { columnProps } from '@/layouts/markdown';
 import cx from 'classnames';
 
 const AnchorLinks = ({ children, small, className }) => {

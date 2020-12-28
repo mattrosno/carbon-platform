@@ -1,14 +1,14 @@
-import '../styles/globals.scss';
+import '@/styles/globals.scss';
 
-import Layout, { LayoutProvider } from '../components/layout';
+import MarkdownLayout, { MarkdownLayoutProvider } from '@/layouts/markdown';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <LayoutProvider>
-      <Layout>
+    <MarkdownLayoutProvider>
+      <MarkdownLayout>
         <Component {...pageProps} />
-      </Layout>
-    </LayoutProvider>
+      </MarkdownLayout>
+    </MarkdownLayoutProvider>
   );
 };
 

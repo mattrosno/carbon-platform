@@ -1,6 +1,6 @@
 import { Column, Row } from 'carbon-components-react';
 
-import { columnProps } from '../layout';
+import { columnProps } from '@/layouts/markdown';
 import cx from 'classnames';
 import { list } from './markdown.module.scss';
 

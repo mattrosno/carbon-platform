@@ -13,16 +13,16 @@ import {
   Sup,
   Table,
   Ul,
-} from '../markdown';
-import { AnchorLink, AnchorLinks } from '../anchor-links';
+} from '@/components/markdown';
+import { AnchorLink, AnchorLinks } from '@/components/anchor-links';
 import { Column, Row } from 'carbon-components-react';
 import { MdxColumn, MdxRow } from './grid';
 
-import ArtDirection from '../art-direction';
+import ArtDirection from '@/components/art-direction';
 import Img from './image';
-import InlineNotification from '../inline-notification';
-import PageDescription from '../page-description';
-import { columnProps } from '../layout';
+import InlineNotification from '@/components/inline-notification';
+import PageDescription from '@/components/page-description';
+import { columnProps } from '@/layouts/markdown';
 import cx from 'classnames';
 import styles from './mdx.module.scss';
 

@@ -1,7 +1,7 @@
 import { Column, Row } from 'carbon-components-react';
 
 import React from 'react';
-import { columnProps } from '../layout';
+import { columnProps } from '@/layouts/markdown';
 import cx from 'classnames';
 import { pageDescription } from './page-description.module.scss';
 

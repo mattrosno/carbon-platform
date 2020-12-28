@@ -1,7 +1,7 @@
 import { Column, Row } from 'carbon-components-react';
 import { blockquote, blockquoteContainer } from './markdown.module.scss';
 
-import { columnProps } from '../layout';
+import { columnProps } from '@/layouts/markdown';
 import cx from 'classnames';
 
 const Blockquote = ({ className, children, ...rest }) => (
