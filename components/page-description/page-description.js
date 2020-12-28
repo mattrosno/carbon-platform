@@ -8,7 +8,9 @@ import { pageDescription } from './page-description.module.scss';
 const PageDescription = ({ children, className, ...rest }) => (
   <Row className={cx(className, pageDescription)} {...rest}>
     <Column {...columnProps}>
-      {React.cloneElement(children, { noGrid: true })}
+      {React.Children.toArray(children).map((child) =>
+        React.cloneElement(child, { noGrid: true })
+      )}
     </Column>
   </Row>
 );

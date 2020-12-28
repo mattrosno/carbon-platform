@@ -5,14 +5,18 @@ import AutolinkHeader from '../autolink-header';
 import { columnProps } from '../layout';
 import cx from 'classnames';
 
-const H2 = ({ children, className, ...rest }) => (
-  <Row className={cx(className, h2Container)} {...rest}>
-    <Column {...columnProps}>
-      <AutolinkHeader is="h2" className={h2}>
-        {children}
-      </AutolinkHeader>
-    </Column>
-  </Row>
-);
+const H2 = ({ children, className, noGrid, ...rest }) => {
+  return noGrid ? (
+    <h2 className={h2}>{children}</h2>
+  ) : (
+    <Row className={cx(className, h2Container)} {...rest}>
+      <Column {...columnProps}>
+        <AutolinkHeader is="h2" className={h2}>
+          {children}
+        </AutolinkHeader>
+      </Column>
+    </Row>
+  );
+};
 
 export default H2;

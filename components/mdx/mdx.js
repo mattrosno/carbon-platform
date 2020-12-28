@@ -36,10 +36,10 @@ const Placeholder = ({ name }) => {
   );
 };
 
-const Caption = () => {
+const PlaceholderNoGrid = ({ name }) => {
   return (
     <p className={cx(styles.placeholderContainer, styles.placeholder)}>
-      Caption MDX
+      {name} MDX
     </p>
   );
 };
@@ -74,7 +74,9 @@ export const mdxComponents = {
     <Placeholder name="ArticleCard">{children}</Placeholder>
   ),
   Aside: ({ children }) => <Placeholder name="Aside">{children}</Placeholder>,
-  Caption,
+  Caption: ({ children }) => (
+    <PlaceholderNoGrid name="Caption">{children}</PlaceholderNoGrid>
+  ),
   Column: MdxColumn,
   ComponentDemo: ({ children }) => (
     <Placeholder name="ComponentDemo">{children}</Placeholder>

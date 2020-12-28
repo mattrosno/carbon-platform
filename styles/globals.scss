@@ -88,3 +88,26 @@
 body {
   background: $ui-01;
 }
+
+code {
+  font-family: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono',
+    'Bitstream Vera Sans Mono', Courier, monospace;
+}
+
+p > code,
+li > code,
+td > code {
+  @include carbon--type-style('code-01');
+  position: relative;
+  display: inline;
+  padding: 0 0.5em;
+  font-size: 0.875em;
+  bottom: 0.0625em;
+  border-radius: 4px;
+  background-color: $ui-03;
+  color: $text-01;
+}
+
+td > code {
+  font-size: 0.75rem;
+}
