@@ -1,15 +1,10 @@
 .page-description {
-  --space: #{$spacing-12};
+  --space: #{$spacing-11};
   margin-top: var(--space);
 }
 
 .page-description p {
   @include carbon--type-style('expressive-heading-03', true);
-}
-
-// Multiple paragaphs
-.page-description > * + * {
-  margin-top: var(--space);
 }
 
 .page-description code {

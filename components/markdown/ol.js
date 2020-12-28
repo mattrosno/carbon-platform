@@ -1,16 +1,22 @@
-import React from 'react';
+import { Column, Row } from 'carbon-components-react';
+
+import { columnProps } from '../layout';
 import cx from 'classnames';
 import { list } from './markdown.module.scss';
 
 const Ol = ({ children, nested, start, className, ...rest }) => {
-  const classNames = cx(className, 'bx--list--ordered--native', list, {
+  const classNames = cx('bx--list--ordered--native', {
     'bx--list--nested': nested,
   });
 
   return (
-    <ol className={classNames} {...rest} start={`${start}`}>
-      {children}
-    </ol>
+    <Row className={cx(list, className)}>
+      <Column {...columnProps}>
+        <ol className={classNames} {...rest} start={`${start}`}>
+          {children}
+        </ol>
+      </Column>
+    </Row>
   );
 };
 

@@ -1,12 +1,10 @@
 import {
-  Column,
   Grid,
   Header,
   HeaderContainer,
   HeaderGlobalAction,
   HeaderGlobalBar,
   HeaderMenuButton,
-  Row,
   SideNav,
   SideNavItems,
   SideNavMenu,
@@ -48,6 +46,13 @@ const NextLink = forwardRef(function NextLink(
     </Link>
   );
 });
+
+export const columnProps = {
+  md: { span: 6, offset: 1 },
+  lg: { span: 13, offset: 1 },
+  xlg: { span: 10, offset: 1 },
+  max: { span: 9, offset: 1 },
+};
 
 const Layout = ({ children }) => {
   const router = useRouter();
@@ -136,17 +141,7 @@ const Layout = ({ children }) => {
           </Header>
         )}></HeaderContainer>
       <div className={`theme--g10 ${styles.content}`}>
-        <Grid fullWidth>
-          <Row>
-            <Column
-              className={styles.main}
-              md={{ span: 6, offset: 1 }}
-              lg={{ span: 12, offset: 1 }}
-              xlg={{ span: 9, offset: 1 }}>
-              {children}
-            </Column>
-          </Row>
-        </Grid>
+        <Grid className={styles.main}>{children}</Grid>
       </div>
     </>
   );

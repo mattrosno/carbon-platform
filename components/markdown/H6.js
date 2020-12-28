@@ -1,11 +1,17 @@
-import React from 'react';
+import { Column, Row } from 'carbon-components-react';
+import { h6, h6Container } from './markdown.module.scss';
+
+import { columnProps } from '../layout';
 import cx from 'classnames';
-import { h6 } from './markdown.module.scss';
 
 const H6 = ({ children, className, ...rest }) => (
-  <h6 className={cx(className, h6)} {...rest}>
-    {children}
-  </h6>
+  <Row className={cx(className, h6Container)}>
+    <Column {...columnProps}>
+      <h6 className={h6} {...rest}>
+        {children}
+      </h6>
+    </Column>
+  </Row>
 );
 
 export default H6;

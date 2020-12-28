@@ -1,11 +1,14 @@
-.list {
-  width: 100%;
-  --space: 32px;
+.list-container {
+  --space: #{$spacing-07};
   margin-top: var(--space);
 }
 
-.list + * {
-  --space: 72px;
+.list-container + * {
+  --space: #{$spacing-11};
+}
+
+.list {
+  width: 100%;
 }
 
 .link {

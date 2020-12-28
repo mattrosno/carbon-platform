@@ -1,14 +1,26 @@
-import React from 'react';
-import cx from 'classnames';
-import { paragraph } from './markdown.module.scss';
+import { Column, Row } from 'carbon-components-react';
+import { paragraph, paragraphContainer } from './markdown.module.scss';
 
-const P = ({ children, className, ...rest }) => {
-  const paragraphClasses = cx(className, paragraph);
+import { columnProps } from '../layout';
+import cx from 'classnames';
+
+const P = ({ children, className, noGrid, ...rest }) => {
+  if (noGrid) {
+    return (
+      <p className={paragraph} {...rest}>
+        {children}
+      </p>
+    );
+  }
 
   return (
-    <p className={paragraphClasses} {...rest}>
-      {children}
-    </p>
+    <Row className={cx(className, paragraphContainer)}>
+      <Column {...columnProps}>
+        <p className={paragraph} {...rest}>
+          {children}
+        </p>
+      </Column>
+    </Row>
   );
 };
 

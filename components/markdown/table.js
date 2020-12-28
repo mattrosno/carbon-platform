@@ -1,12 +1,15 @@
+import { Column, Row } from 'carbon-components-react';
 import { table, tableContainer } from './markdown.module.scss';
 
 import PropTypes from 'prop-types';
-import React from 'react';
+import { columnProps } from '../layout';
 
 const PageTable = ({ children }) => (
-  <div className={tableContainer}>
-    <table className={table}>{children}</table>
-  </div>
+  <Row className={tableContainer} narrow={true}>
+    <Column {...columnProps}>
+      <table className={table}>{children}</table>
+    </Column>
+  </Row>
 );
 
 export default PageTable;

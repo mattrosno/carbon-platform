@@ -1,19 +1,27 @@
-import { InlineNotification as CarbonInlineNotification } from 'carbon-components-react';
+import {
+  InlineNotification as CarbonInlineNotification,
+  Column,
+  Row,
+} from 'carbon-components-react';
+
 import PropTypes from 'prop-types';
 import React from 'react';
+import { columnProps } from '../layout';
 import cx from 'classnames';
 import styles from './inline-notification.module.scss';
 
 const InlineNotification = ({ children, className, kind = 'info' }) => (
-  <div className={cx(styles.notification, className)}>
-    <CarbonInlineNotification
-      lowContrast
-      hideCloseButton
-      kind={kind}
-      title=""
-      subtitle={children}
-    />
-  </div>
+  <Row className={cx(styles.notification, className)}>
+    <Column {...columnProps}>
+      <CarbonInlineNotification
+        lowContrast
+        hideCloseButton
+        kind={kind}
+        title=""
+        subtitle={React.cloneElement(children, { noGrid: true })}
+      />
+    </Column>
+  </Row>
 );
 
 InlineNotification.propTypes = {

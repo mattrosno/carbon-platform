@@ -1,12 +1,18 @@
+import { Column, Row } from 'carbon-components-react';
+import { h2, h2Container } from './markdown.module.scss';
+
 import AutolinkHeader from '../autolink-header';
-import React from 'react';
+import { columnProps } from '../layout';
 import cx from 'classnames';
-import { h2 } from './markdown.module.scss';
 
 const H2 = ({ children, className, ...rest }) => (
-  <AutolinkHeader className={cx(className, h2)} is="h2" {...rest}>
-    {children}
-  </AutolinkHeader>
+  <Row className={cx(className, h2Container)}>
+    <Column {...columnProps}>
+      <AutolinkHeader is="h2" className={h2} {...rest}>
+        {children}
+      </AutolinkHeader>
+    </Column>
+  </Row>
 );
 
 export default H2;

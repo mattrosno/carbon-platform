@@ -1,9 +1,17 @@
-import React from 'react';
-import { blockquote } from './markdown.module.scss';
+import { Column, Row } from 'carbon-components-react';
+import { blockquote, blockquoteContainer } from './markdown.module.scss';
+
+import { columnProps } from '../layout';
 import cx from 'classnames';
 
-const Blockquote = ({ className, ...rest }) => (
-  <blockquote className={cx(className, blockquote)} {...rest} />
+const Blockquote = ({ className, children, ...rest }) => (
+  <Row className={cx(className, blockquoteContainer)} {...rest}>
+    <Column {...columnProps}>
+      <blockquote className={blockquote}>
+        {React.cloneElement(children, { noGrid: true })}
+      </blockquote>
+    </Column>
+  </Row>
 );
 
 export default Blockquote;

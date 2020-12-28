@@ -15,18 +15,24 @@ import {
   Ul,
 } from '../markdown';
 import { AnchorLink, AnchorLinks } from '../anchor-links';
+import { Column, Row } from 'carbon-components-react';
 
 import Image from 'next/image';
 import InlineNotification from '../inline-notification';
 import PageDescription from '../page-description';
+import { columnProps } from '../layout';
 import styles from './mdx.module.scss';
 
 const Placeholder = ({ name }) => (
-  <p className={styles.placeholder}>{name} MDX</p>
+  <Row>
+    <Column {...columnProps}>
+      <p className={styles.placeholder}>{name} MDX</p>
+    </Column>
+  </Row>
 );
 
 const ColRow = ({ children, className }) => (
-  <p className={className}>{children}</p>
+  <section className={className}>{children}</section>
 );
 
 const Img = ({ alt, height, src, width }) => (
