@@ -18,19 +18,31 @@ import { AnchorLink, AnchorLinks } from '../anchor-links';
 import { Column, Row } from 'carbon-components-react';
 import { MdxColumn, MdxRow } from './grid';
 
+import ArtDirection from '../art-direction';
 import Img from './image';
 import InlineNotification from '../inline-notification';
 import PageDescription from '../page-description';
 import { columnProps } from '../layout';
+import cx from 'classnames';
 import styles from './mdx.module.scss';
 
-const Placeholder = ({ name }) => (
-  <Row>
-    <Column {...columnProps}>
-      <p className={styles.placeholder}>{name} MDX</p>
-    </Column>
-  </Row>
-);
+const Placeholder = ({ name }) => {
+  return (
+    <Row className={styles.placeholderContainer}>
+      <Column {...columnProps}>
+        <p className={styles.placeholder}>{name} MDX</p>
+      </Column>
+    </Row>
+  );
+};
+
+const Caption = () => {
+  return (
+    <p className={cx(styles.placeholderContainer, styles.placeholder)}>
+      Caption MDX
+    </p>
+  );
+};
 
 export const mdxComponents = {
   h1: H1,
@@ -57,16 +69,12 @@ export const mdxComponents = {
   ),
   AnchorLink,
   AnchorLinks,
-  ArtDirection: ({ children }) => (
-    <Placeholder name="ArtDirection">{children}</Placeholder>
-  ),
+  ArtDirection,
   ArticleCard: ({ children }) => (
     <Placeholder name="ArticleCard">{children}</Placeholder>
   ),
   Aside: ({ children }) => <Placeholder name="Aside">{children}</Placeholder>,
-  Caption: ({ children }) => (
-    <Placeholder name="Caption">{children}</Placeholder>
-  ),
+  Caption,
   Column: MdxColumn,
   ComponentDemo: ({ children }) => (
     <Placeholder name="ComponentDemo">{children}</Placeholder>

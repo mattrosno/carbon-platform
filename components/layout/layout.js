@@ -52,9 +52,9 @@ const NextLink = forwardRef(function NextLink(
  */
 export const columnProps = {
   md: { span: 6, offset: 1 },
-  lg: { span: 13, offset: 1 },
+  lg: { span: 12, offset: 1 },
   xlg: { span: 10, offset: 1 },
-  max: { span: 9, offset: 1 },
+  max: { span: 8, offset: 1 },
 };
 
 const Layout = ({ children }) => {

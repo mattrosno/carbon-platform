@@ -6,9 +6,9 @@ import { columnProps } from '../layout';
 import cx from 'classnames';
 
 const H1 = ({ children, className, ...rest }) => (
-  <Row className={cx(className, h1Container)}>
+  <Row className={cx(className, h1Container)} {...rest}>
     <Column {...columnProps}>
-      <AutolinkHeader is="h1" className={h1} {...rest}>
+      <AutolinkHeader is="h1" className={h1}>
         {children}
       </AutolinkHeader>
     </Column>
