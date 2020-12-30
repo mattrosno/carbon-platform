@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
 
 import { MarkdownContext } from '@/layouts/markdown';
-import { getComponentNavData } from '@/lib/github';
+import { getLibraryNavData } from '@/lib/github';
 
 export const getStaticProps = async () => {
-  const navData = await getComponentNavData();
+  const navData = await getLibraryNavData();
 
   return {
     props: {

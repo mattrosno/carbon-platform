@@ -74,18 +74,6 @@ const MarkdownLayout = ({ children }) => {
     return scroll.destroy;
   }, []);
 
-  const guidelines = ['Accessibility', 'Content'];
-  const foundation = [
-    'Color',
-    'Grid',
-    'Icons',
-    'Pictograms',
-    'Motion',
-    'Layout',
-    'Themes',
-    'Typography',
-  ];
-
   return (
     <>
       <Head>
@@ -112,33 +100,23 @@ const MarkdownLayout = ({ children }) => {
             </HeaderGlobalBar>
             <SideNav aria-label="Side navigation" expanded={isSideNavExpanded}>
               <SideNavItems>
-                <SideNavMenu title="Guidelines">
-                  {guidelines.map((item, i) => (
-                    <SideNavMenuItem element={NextLink} href="/" key={i}>
-                      {item}
-                    </SideNavMenuItem>
-                  ))}
-                </SideNavMenu>
-                <SideNavMenu title="Foundation">
-                  {foundation.map((item, i) => (
-                    <SideNavMenuItem element={NextLink} href="/" key={i}>
-                      {item}
-                    </SideNavMenuItem>
-                  ))}
-                </SideNavMenu>
-                <SideNavMenu defaultExpanded={true} title="Components">
-                  {navData.map((item) => (
-                    <SideNavMenuItem
-                      element={NextLink}
-                      href={`/component/${item.id}`}
-                      isActive={router.asPath.startsWith(
-                        `/component/${item.id}`
-                      )}
-                      key={item.id}>
-                      {item.name}
-                    </SideNavMenuItem>
-                  ))}
-                </SideNavMenu>
+                {navData.map((library, i) => (
+                  <SideNavMenu
+                    key={i}
+                    title={`${library.name} ${library.version}`}>
+                    {library.components.map((item) => (
+                      <SideNavMenuItem
+                        element={NextLink}
+                        href={`/${item.library}/component/${item.slug}`}
+                        isActive={router.asPath.startsWith(
+                          `/${item.library}/component/${item.slug}`
+                        )}
+                        key={item.slug}>
+                        {item.name}
+                      </SideNavMenuItem>
+                    ))}
+                  </SideNavMenu>
+                ))}
               </SideNavItems>
             </SideNav>
           </Header>

@@ -1,7 +1,7 @@
 import {
-  getAllComponentIds,
+  getAllComponentSlugs,
   getComponentData,
-  getComponentNavData,
+  getLibraryNavData,
 } from '@/lib/github';
 import { useContext, useEffect } from 'react';
 
@@ -11,8 +11,8 @@ import hydrate from 'next-mdx-remote/hydrate';
 import { mdxComponents } from '@/components/mdx';
 
 export const getStaticProps = async ({ params }) => {
-  const componentData = await getComponentData(params.id);
-  const navData = await getComponentNavData();
+  const componentData = await getComponentData(params.library, params.slug);
+  const navData = await getLibraryNavData();
 
   return {
     props: {
@@ -23,7 +23,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const paths = await getAllComponentIds();
+  const paths = await getAllComponentSlugs();
 
   return {
     paths,
