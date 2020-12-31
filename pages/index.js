@@ -1,7 +1,9 @@
+import { Column, Row } from 'carbon-components-react';
+import { MarkdownContext, columnProps } from '@/layouts/markdown';
 import { useContext, useEffect } from 'react';
 
-import { MarkdownContext } from '@/layouts/markdown';
 import { getLibraryNavData } from '@/lib/github';
+import { h1 } from './pages.module.scss';
 
 export const getStaticProps = async () => {
   const navData = await getLibraryNavData();
@@ -21,9 +23,11 @@ const Home = ({ navData }) => {
   }, [navData, setNavData]);
 
   return (
-    <>
-      <h1>Home page</h1>
-    </>
+    <Row>
+      <Column {...columnProps}>
+        <h1 className={h1}>Home</h1>
+      </Column>
+    </Row>
   );
 };
 

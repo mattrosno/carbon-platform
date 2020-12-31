@@ -10,14 +10,15 @@ import {
   SideNavMenu,
   SideNavMenuItem,
   SkipToContent,
+  ToastNotification,
 } from 'carbon-components-react';
 import { Search20, Switcher20 } from '@carbon/icons-react';
-import { useContext, useEffect } from 'react';
+import { forwardRef, useContext, useEffect, useState } from 'react';
 
 import Head from 'next/head';
 import Link from 'next/link';
 import { MarkdownContext } from './markdown-context';
-import { forwardRef } from 'react';
+import { staticLibraryData } from '@/data/libraries';
 import styles from './markdown-layout.module.scss';
 import { useRouter } from 'next/router';
 
@@ -58,8 +59,13 @@ export const columnProps = {
 };
 
 const MarkdownLayout = ({ children }) => {
+  const [showToast, setShowToast] = useState(true);
   const router = useRouter();
   const { navData } = useContext(MarkdownContext);
+
+  const librarySlugs = staticLibraryData.map(
+    (library) => `${library.org}-${library.repo}-${library.ref}`
+  );
 
   useEffect(() => {
     const scroll = require('smooth-scroll')('a[href*="#"]', {
@@ -73,6 +79,16 @@ const MarkdownLayout = ({ children }) => {
 
     return scroll.destroy;
   }, []);
+
+  useEffect(() => {
+    setShowToast(
+      router.query.library && !librarySlugs.includes(router.query.library)
+    );
+  }, [librarySlugs, router.query.library]);
+
+  const handleExitPreview = () => {
+    router.replace('/api/exit-preview');
+  };
 
   return (
     <>
@@ -122,6 +138,17 @@ const MarkdownLayout = ({ children }) => {
           </Header>
         )}></HeaderContainer>
       <div className={`theme--g10 ${styles.content}`}>
+        {showToast && (
+          <ToastNotification
+            caption=""
+            className={styles.toast}
+            iconDescription="Exit preview mode"
+            kind="info"
+            onCloseButtonClick={handleExitPreview}
+            subtitle={<span>Close to exit preview mode.</span>}
+            title="Preview mode"
+          />
+        )}
         <Grid className={styles.main}>{children}</Grid>
       </div>
     </>

@@ -11,3 +11,9 @@
 .main {
   padding-bottom: $spacing-11;
 }
+
+.toast {
+  position: fixed;
+  top: 3rem; // header height
+  right: 0;
+}

@@ -10,9 +10,21 @@ import { MarkdownContext } from '@/layouts/markdown';
 import hydrate from 'next-mdx-remote/hydrate';
 import { mdxComponents } from '@/components/mdx';
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params, preview, previewData }) => {
+  const libraries = preview
+    ? [
+        {
+          org: previewData.org,
+          repo: previewData.repo,
+          ref: previewData.ref,
+        },
+      ]
+    : null;
+
+  // Call before getComponentData as this primes the cache
+  const navData = await getLibraryNavData(libraries);
+
   const componentData = await getComponentData(params.library, params.slug);
-  const navData = await getLibraryNavData();
 
   return {
     props: {
