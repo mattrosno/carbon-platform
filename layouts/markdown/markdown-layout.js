@@ -59,7 +59,7 @@ export const columnProps = {
 };
 
 const MarkdownLayout = ({ children }) => {
-  const [showToast, setShowToast] = useState(true);
+  const [showToast, setShowToast] = useState(false);
   const router = useRouter();
   const { navData } = useContext(MarkdownContext);
 

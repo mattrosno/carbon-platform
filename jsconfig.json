@@ -9,5 +9,6 @@
       "@/lib/*": ["lib/*"],
       "@/styles/*": ["styles/*"]
     }
-  }
+  },
+  "exclude": [".carbon", ".next", "node_modules", "out"]
 }

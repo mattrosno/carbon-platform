@@ -1,22 +1,38 @@
+import { deleteFiles, getFiles } from '@/lib/file-cache';
+
+import { getLibrarySlug } from '@/lib/router';
+
+/**
+ * TODO: in our CLI preview mode that creates a library repo, somehow create a
+ * token and validate it here.
+ *
+ * Get the library files here to validate the query parameters and make sure
+ * there is data to render when we redirect.
+ */
 export default async (req, res) => {
-  // TODO where to generate and share preview token?
-  if (req.query.secret !== '1234') {
+  const { org, repo, ref, secret } = req.query;
+
+  if (secret !== '1234') {
     return res.status(401).json({ message: 'Invalid token' });
   }
-
-  const { org, repo, ref } = req.query;
 
   if (!org || !repo || !ref) {
     return res.status(401).json({ message: 'Invalid parameters' });
   }
 
-  // TODO check to make sure the library is valid
+  // Remove old files to ensure a cache miss
+  await deleteFiles(getLibrarySlug(org, repo, ref));
 
-  // const library = await getLibraryBySlug(req.query.slug);
+  // Validate the library
+  const previewFiles = await getFiles({
+    org,
+    repo,
+    ref,
+  });
 
-  // if (!library) {
-  //   return res.status(401).json({ message: 'Invalid library' });
-  // }
+  if (!previewFiles || !previewFiles.length) {
+    return res.status(401).json({ message: 'Invalid library' });
+  }
 
   // Enable preview mode by setting the cookies
   res.setPreviewData({
@@ -26,5 +42,5 @@ export default async (req, res) => {
   });
 
   // Redirect to the path for the library
-  res.redirect(`/${org}-${repo}-${ref}`);
+  res.redirect(`/${getLibrarySlug(org, repo, ref)}`);
 };

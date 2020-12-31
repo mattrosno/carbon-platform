@@ -20,10 +20,8 @@ export const getStaticProps = async ({ params, preview, previewData }) => {
       ]
     : null;
 
-  // Call before getLibraryData as this primes the cache
-  const navData = await getLibraryNavData(libraries);
-
   const libraryData = await getLibraryData(params.library);
+  const navData = await getLibraryNavData(libraries);
 
   return {
     props: {

@@ -1,5 +1,5 @@
 /**
- * TODO this would be hardcoded for what libraries to show when unauthenticated,
+ * TODO: this would be hardcoded for what libraries to show when unauthenticated
  * and it would come from an endpoint when authenticated based on what team you
  * are currently viewing.
  */
