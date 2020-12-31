@@ -37,12 +37,14 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
 const Component = ({ componentData, navData }) => {
   const { setNavData } = useContext(MarkdownContext);
+
+  if (!componentData || !navData) return null;
 
   useEffect(() => {
     setNavData(navData);
